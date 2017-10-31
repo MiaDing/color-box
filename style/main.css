@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #776e65;
+}
+body, html {
+    background: #faf8ef;
+}
+body {
+    margin: 80px 0;
+}
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+/*header*/
+header::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 10px;
+}
+header h1.title {
+    float: left;
+    text-transform: capitalize;
+    padding: 5px 15px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+header .scores-container {
+    float: right;
+    padding: 0 5px;
+}
+.scores-container .score-container,.scores-container .best-container {
+    height: 25px;
+    width: 30px;
+    line-height: 47px;
+    text-align: center;
+    color: white;
+    background: #bbada0;
+    padding: 15px 25px;
+    display: inline-block;
+    position: relative;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+.score-container::after, .best-container::after {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    line-height: 13px;
+    text-align: center;
+    /*display: block;*/
+    text-transform: uppercase;
+    color: #eee4da;
+    font-size: 13px;
+    font-weight: bold;
+}
+.score-container::after {
+    content: "score";
+}
+.best-container::after {
+    content: "best";
+}
+.score-container .score-addition {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    right: 20px;
+    z-index: 30px;
+    animation: move-up 600ms ease-in ;
+    animation-fill-mode: both;
+}
+@keyframes move-up {
+    0% {
+        top: 25px;
+        opacity: 1;
+    }
+    100% {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+/*header .above-message*/
+header .above-message::before{
+    clear: both;
+    height: 15px;
+    display: block;
+    content: "";
+}
+/*progress*/
+.above-message .progress-container {
+    float: left;
+    position: relative;
+    top: 20px;
+    width: 360px;
+    height: 16px;
+    line-height: 16px;
+    border: solid 1px yellow;
+}
+.progress-container .progress-content {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+}
+.above-message a {
+    float: right;
+}
+/*section*/
+section {
+    height: 500px;
+    background: #bbada0;
+    position: relative;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+a, input {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    padding: 0 20px;
+    border-radius: 5px;
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+}
+/*section .fun-container*/
+section .fun-container, section .fun-won, section .game-message{
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(238, 228, 218, 0.5);
+    color: inherit;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    /*for default font-size in fun-container*/
+    font-size: 25px;
+    animation: appear 1500ms ease-in 100ms;
+    animation-fill-mode: both;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.fun-container .fun-equation, section .game-message p{
+    margin: 200px 0 30px;
+    text-align: center;
+    line-height: 50px;
+}
+.fun-container.fun-hidden, .fun-won.fun-hidden, .progress-container.fun-hidden, .game-message.fun-hidden{
+    display: none;
+}
+.fun-equation .fun-addend, .fun-equation span:last-child{
+    font-size: 50px;
+    margin: 0 25px;
+}
+.fun-submit input {
+    padding: 10px 25px;
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(250, 248, 239, 0.8);
+}
+.fun-won span {
+    display: inline-block;
+    margin-top: 150px;
+    font-size: 50px;
+}
+
+/*section .game-container*/
+section .game-container {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+
+/*.game-message*/
+.game-message span{
+    color: red;
+    font-size: 1.2em;
+}
+
+/*section .game-container .grid*/
+.game-container .grid-row {
+    display: block;
+    margin-bottom: 8px;
+}
+.game-container .grid-row:last-child {
+    margin-bottom: 0;
+}
+.game-container .grid-row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.grid-row .grid-cell {
+    width: 53px;
+    height: 53px;
+    line-height: 53px;
+    float: left;
+    margin-right: 8px;
+    border-radius: 5px;
+    background: rgba(238,228, 218, 0.35);
+    position: relative;
+    cursor: pointer;
+}
+.grid-row .grid-cell:last-child {
+    margin-right: 0;
+}
+.grid-row:nth-child(odd) .grid-cell:nth-child(odd), .grid-row:nth-child(even) .grid-cell:nth-child(even){
+    background-color: #e0e0e0;
+}
+
+/*tile*/
+.game-container .grid-row .grid-cell .tile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    opacity: 0.9;
+    box-shadow: 10px 10px 5px grey;
+    transition: 500ms ease-in-out;
+    transition-property: transform;
+    cursor: default;
+}
+
+.tile-red {
+    background: red;
+}
+.tile-pink {
+    background: pink;
+}
+.tile-green {
+    background: green;
+}
+.tile-blue {
+    background: blue;
+}
+.tile-orange {
+    background: orange;
+}
+
+/*footer*/
+footer {
+    margin-top: 100px;
+}
+footer .copyright {
+    display: block;
+    text-align: center;
+}

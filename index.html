@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>color box</title>
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">color box</h1>
+            <div class="scores-container">
+                <div class="score-container">0</div>
+                <div class="best-container">0</div>
+            </div>
+            <div class="above-message">
+                <div class="progress-container">
+                    <div class="progress-content"></div>
+                </div>
+                <a class="restart-button">New Game</a>
+            </div>
+        </header>
+        <section>
+            <div class="fun-container fun-hidden">
+                <div class="fun-equation">
+                    <span class="fun-addend">5</span>
+                    <span>+</span>
+                    <span class="fun-addend">20</span>
+                    <span>=</span>
+                    <span>?</span>
+                </div>
+                <div class="fun-submit">
+                    <input type="text" placeholder="Please enter your answer">
+                    <input type="button" value="submit">
+                </div>
+            </div>
+            <div class="fun-won fun-hidden">
+                <span>Let's GO!</span>
+                <p>Be careful! <br/>
+                    You only have <em>30</em> seconds to play!!!</p>
+            </div>
+            <div class="game-container">
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-0-0"></div>
+                    <div class="grid-cell grid-position-0-1"></div>
+                    <div class="grid-cell grid-position-0-2">
+                        <div class="tile tile-orange"></div>
+                    </div>
+                    <div class="grid-cell grid-position-0-3"></div>
+                    <div class="grid-cell grid-position-0-4"></div>
+                    <div class="grid-cell grid-position-0-5"></div>
+                    <div class="grid-cell grid-position-0-6"></div>
+                    <div class="grid-cell grid-position-0-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-1-0"></div>
+                    <div class="grid-cell grid-position-1-1"></div>
+                    <div class="grid-cell grid-position-1-2"></div>
+                    <div class="grid-cell grid-position-1-3"></div>
+                    <div class="grid-cell grid-position-1-4"></div>
+                    <div class="grid-cell grid-position-1-5"></div>
+                    <div class="grid-cell grid-position-1-6"></div>
+                    <div class="grid-cell grid-position-1-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-2-0"></div>
+                    <div class="grid-cell grid-position-2-1"></div>
+                    <div class="grid-cell grid-position-2-2"></div>
+                    <div class="grid-cell grid-position-2-3"></div>
+                    <div class="grid-cell grid-position-2-4"></div>
+                    <div class="grid-cell grid-position-2-5"></div>
+                    <div class="grid-cell grid-position-2-6"></div>
+                    <div class="grid-cell grid-position-2-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-3-0"></div>
+                    <div class="grid-cell grid-position-3-1"></div>
+                    <div class="grid-cell grid-position-3-2"></div>
+                    <div class="grid-cell grid-position-3-3"></div>
+                    <div class="grid-cell grid-position-3-4"></div>
+                    <div class="grid-cell grid-position-3-5"></div>
+                    <div class="grid-cell grid-position-3-6"></div>
+                    <div class="grid-cell grid-position-3-7">
+                        <div class="tile tile-pink"></div>
+                    </div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-4-0"></div>
+                    <div class="grid-cell grid-position-4-1"></div>
+                    <div class="grid-cell grid-position-4-2"></div>
+                    <div class="grid-cell grid-position-4-3"></div>
+                    <div class="grid-cell grid-position-4-4"></div>
+                    <div class="grid-cell grid-position-4-5"></div>
+                    <div class="grid-cell grid-position-4-6"></div>
+                    <div class="grid-cell grid-position-4-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-5-0"></div>
+                    <div class="grid-cell grid-position-5-1"></div>
+                    <div class="grid-cell grid-position-5-2"></div>
+                    <div class="grid-cell grid-position-5-3"></div>
+                    <div class="grid-cell grid-position-5-4"></div>
+                    <div class="grid-cell grid-position-5-5"></div>
+                    <div class="grid-cell grid-position-5-6"></div>
+                    <div class="grid-cell grid-position-5-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-6-0">
+                        <div class="tile tile-green"></div>
+                    </div>
+                    <div class="grid-cell grid-position-6-1"></div>
+                    <div class="grid-cell grid-position-6-2"></div>
+                    <div class="grid-cell grid-position-6-3"></div>
+                    <div class="grid-cell grid-position-6-4"></div>
+                    <div class="grid-cell grid-position-6-5"></div>
+                    <div class="grid-cell grid-position-6-6"></div>
+                    <div class="grid-cell grid-position-6-7"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell grid-position-7-0"></div>
+                    <div class="grid-cell grid-position-7-1"></div>
+                    <div class="grid-cell grid-position-7-2"></div>
+                    <div class="grid-cell grid-position-7-3"></div>
+                    <div class="grid-cell grid-position-7-4"></div>
+                    <div class="grid-cell grid-position-7-5"></div>
+                    <div class="grid-cell grid-position-7-6"></div>
+                    <div class="grid-cell grid-position-7-7"></div>
+                </div>
+            </div>
+            <div class="game-message fun-hidden">
+                <p>You Got <span>40</span> scores <br/>and your best scores is <span>197</span>.</p>
+                <a class="retry-button">Play Again</a>
+            </div>
+        </section>
+        <footer>
+            <div class="copyright">copyright &copy; 2017</div>
+        </footer>
+    </div>
+    <script src="js/audio.js"></script>
+    <script src="js/above_game_manager.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/click_event.js"></script>
+    <script src="js/html_actuator.js"></script>
+    <script src="js/local_storage_manager.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/application.js"></script>
+</body>
+</html>

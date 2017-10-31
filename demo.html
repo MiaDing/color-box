@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo-cursor</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        .container {margin: 80px auto; width: 300px; height: 300px; position: relative; border: solid red 5px;}
+        .container .float {width: 100px; height: 100px; background: gray; float: left;position: relative; cursor: pointer;}
+        .container .float .box {content: "world"; position: absolute; top: 10px; left: 15px; width: 50px; height: 50px; background: green;}
+        .container .float .box:hover {background: blue;}
+        .remove {margin: 30px 0;}
+        .remove p {background-color: pink;}
+        .remove p.current {background: red;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="float">
+            <div class="box">hello</div>
+        </div>
+    </div>
+    <ul>
+        <li>1
+            <a href="">001</a>
+            <a href="">002</a>
+            <a href="">003</a>
+            <a href="">004</a>
+            <a href="">005</a>
+            <a href="">006</a>
+            <a href="">007</a>
+            <a href="">008</a>
+        </li>
+        <li>2
+            <a href="">001</a>
+            <a href="">002</a>
+            <a href="">003</a>
+            <a href="">004</a>
+            <a href="">005</a>
+            <a href="">006</a>
+            <a href="">007</a>
+            <a href="">008</a>
+        </li>
+        <li>3
+            <a href="">001</a>
+            <a href="">002</a>
+            <a href="">003</a>
+            <a href="">004</a>
+            <a href="">005</a>
+            <a href="">006</a>
+            <a href="">007</a>
+            <a href="">008</a>
+        </li>
+        <li>4
+            <a href="">001</a>
+            <a href="">002</a>
+            <a href="">003</a>
+            <a href="">004</a>
+            <a href="">005</a>
+            <a href="">006</a>
+            <a href="">007</a>
+            <a href="">008</a>
+        </li>
+        <li>5
+            <a href="">001</a>
+            <a href="">002</a>
+            <a href="">003</a>
+            <a href="">004</a>
+            <a href="">005</a>
+            <a href="">006</a>
+            <a href="">007</a>
+            <a href="">008</a>
+        </li>
+    </ul>
+    <div class="remove">
+        <button>remove</button>
+        <p>hello</p>
+        <p>world</p>
+        <input type="button" value="count">
+        <span>0</span>
+    </div>
+    <script>
+        var oLi = document.querySelectorAll("li");
+        oLi[1].querySelector(":nth-child(" + 3 + ")").style.color = "red";
+        var li = document.querySelectorAll("ul li:nth-child(odd) a:nth-child(odd), ul li:nth-child(even) a:nth-child(even)");
+        for(var i = 0; i < li.length; i++){
+            li[i].style.backgroundColor = "grey";
+        }
+        var btn = document.querySelector("button");
+        var removeContainer = document.querySelector(".remove");
+        btn.onclick = function(){
+            var flag = removeContainer.querySelector("p:nth-child(3)");
+            if(flag){
+                flag.classList.add("current");
+                var timer = setTimeout(function(){
+                    removeContainer.removeChild(flag);
+                }, 3500);
+            }else {
+                var oP = document.createElement("p");
+                oP.textContent = "yes";
+                removeContainer.appendChild(oP);
+            }
+        };
+        var oInput = removeContainer.querySelector("input");
+        var oSpan = removeContainer.querySelector("span");
+        var count = 0;
+        oInput.onclick = function(){
+            oSpan.textContent = ++count;
+        };
+        
+    </script>
+</body>
+</html>
