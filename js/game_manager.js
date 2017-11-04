@@ -4,11 +4,12 @@ function GameManager(size, Actuator, StorageManager, ClickEvent,  AudioManager){
     this.storageManager = new StorageManager;
     // this.storageManager.clearBestScore();
     this.clickEvent = new ClickEvent;
+    this.audioManager = new AudioManager();
     this.flag = false;//the state of click error
     this.speed = 30;
-    this.during = 30000;
-    this.startTiles = 30;// 5 colors * 6
-    this.color = ["red", "orange", "green", "blue", "pink"];
+    this.during = 60000;
+    this.startTiles = 160;// 10 colors * 16
+    this.color = ["red", "orange", "green", "blue", "pink", "black", "yellow", "purple", "brown", "aqua"];
     this.setup();
     this.clickEvent.on("restart", this.restart.bind(this));
     this.clickEvent.on("match", this.match.bind(this));
@@ -18,7 +19,7 @@ GameManager.prototype.restart = function(){
     this.setup();
 };
 GameManager.prototype.setup = function(){
-    this.grid = new Grid(this.size);// 8 dimensions array
+    this.grid = new Grid(this.size);
     this.score = 0;
     this.bestScore = this.storageManager.getBestScore();
     this.over = false;
@@ -28,10 +29,10 @@ GameManager.prototype.setup = function(){
 };
 GameManager.prototype.showProgress = function() {
     var self = this;
+    this.actuator.progressAppear();
     this.progress = document.querySelector(".progress-container .progress-content");
     this.width = 100;
     this.progress.setAttribute("style", "width: 100%");
-    // console.log(this.progress.style.width)
     var timer = setInterval(function(){
         self.width -= 100 / ( self.during / self.speed );
         if(self.flag == true){
@@ -54,9 +55,7 @@ GameManager.prototype.addStartTiles = function(){
     }
 };
 GameManager.prototype.addRandomTile = function(color){
-    // *************
-    var tile = null;
-    tile = new Tile(this.grid.randomAvailableCell(), color);//{x,y}
+    var tile = new Tile(this.grid.randomAvailableCell(), color);
     this.grid.insertTile(tile);//this.grid.cells{[5,6]:{tile}}
 };
 GameManager.prototype.actuate = function(){
@@ -70,10 +69,8 @@ GameManager.prototype.actuate = function(){
         over: this.over
     });
 };
-GameManager.prototype.match = function(pos){//position-x-y, pos => {x, y}
-    //****************
+GameManager.prototype.match = function(pos){
     var matchedState = false;
-    console.log("clicked cell posX: " + pos.x + ",poxY: " + pos.y);
     var matchedCells = this.findBoundCells(pos);
     if(matchedCells.length >= 2){
         for(var i = 0; i < matchedCells.length - 1; i++){
@@ -86,6 +83,7 @@ GameManager.prototype.match = function(pos){//position-x-y, pos => {x, y}
         }
     }else this.flag = true;
     if(matchedState){
+        this.audioManager.playAudio();
         for(var i = 0; i < matchedCells.length; i++){
             if(this.grid.cells[matchedCells[i].x][matchedCells[i].y].match == true){
                 this.grid.removeTile(matchedCells[i]);
@@ -93,9 +91,13 @@ GameManager.prototype.match = function(pos){//position-x-y, pos => {x, y}
         }
         this.score = this.startTiles - (Math.pow(this.size, 2) - this.grid.availableCells().length);
         this.actuate();
-    }else this.flag = true;
-    self.audioManager = new AudioManager();
-    self.audioManager.palyAudio(this.flag);
+    }else {
+        this.flag = true;
+        for(var j = 0; j < this.audioManager.arrFrequency.length / 3; j ++){
+            this.audioManager.playAudio();
+            this.audioManager.sleep(50);
+        }
+    }
 
 };
 GameManager.prototype.updateCellState = function(){

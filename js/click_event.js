@@ -7,17 +7,15 @@ function ClickEvent (){
     this.previousTime = 0;
 }
 
-ClickEvent.prototype.on = function(type, callback){//register
+ClickEvent.prototype.on = function(type, callback){
     if(!this.events[type]) this.events[type] = [];
     this.events[type].push(callback);
-    // console.log(type + " is registered")
 };
 ClickEvent.prototype.trigger = function(type, data) {
     var callbacks = this.events[type];
     if(callbacks){
         callbacks.forEach(function(callback){
             callback(data);
-            // console.log(callbacks + " is triggereds")
         })
     }
 };
@@ -31,8 +29,8 @@ ClickEvent.prototype.listen = function(grid){
                     var currTime = new Date().getTime();
                     if(currTime - self.previousTime > 500){
                         self.previousTime = currTime;
-                        var posX = /[\d](?=\-\d)/g.exec(this.classList[1]);//exec return array["", index, length]
-                        var posY = /[\d]$/g.exec(this.classList[1]);
+                        var posX = /\d+(?=\-\d+)/g.exec(this.classList[1]);
+                        var posY = /\d+$/g.exec(this.classList[1]);
                         self.trigger("match", {x : posX[0], y : posY[0]});
                     }
                 });

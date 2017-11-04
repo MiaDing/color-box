@@ -27,7 +27,6 @@ FunGame.prototype.displayAddend = function(){
 FunGame.prototype.calculate = function(){
     var result;
     result = this.addend[0];
-    // console.log("calculate:" + this.addend);
     for(var i = 1; i < this.addend.length; i++){
         result += this.calculater + this.addend[i];
     }
@@ -54,7 +53,7 @@ FunGameManager.prototype.displayMessage = function(res){
         this.funContainer.classList.add("fun-hidden");
         this.funGameMessage.classList.remove("fun-hidden");
     }else{
-        alert("error, need to enter again");
+        this.oInput.value = "";
         this.funGame.addend = [];
         this.funGame.displayAddend();//restart the randomNum()
     }

@@ -3,6 +3,7 @@ function HTMLActuator(){
     this.scoreContainer = document.querySelector(".score-container");
     this.bestContainer = document.querySelector(".best-container");
     this.messageContainer = document.querySelector(".game-message");
+    this.progressContainer = document.querySelector(".progress-container");
     this.score = 0;
 }
 HTMLActuator.prototype.actuate = function(grid, metadata){
@@ -13,10 +14,9 @@ HTMLActuator.prototype.actuate = function(grid, metadata){
         }
         grid.cells.forEach(function(col){
             col.forEach(function(cell){
-                if(cell) self.addTile(cell, grid.size);//grid.cells[0][0] = {tile {x, y, color}}
+                if(cell) self.addTile(cell, grid.size);
              });
         });
-        // console.log("metadata: " + metadata.score, metadata.bestScore);
         self.updateScore(metadata.score);
         self.updateBestScore(metadata.bestScore);
         if(metadata.over){
@@ -32,10 +32,9 @@ HTMLActuator.prototype.clearContainer = function(container){
 HTMLActuator.prototype.addTile = function(tile, size){
     var self = this;
     var wrapper = document.createElement("div");
-    var position = {x: tile.x, y: tile.y};//{x: 0, y:0}
+    var position = {x: tile.x, y: tile.y};
     var classes = ["tile", "tile-" + tile.color, "position-" + position.x + "-" + position.y];
     if(tile.match){
-        // classes.push("tile-move-"+ pickOne);
         classes.push("tile-move");
     }
     this.applyClasses(wrapper, classes);
@@ -66,4 +65,7 @@ HTMLActuator.prototype.message = function(metadata){
 };
 HTMLActuator.prototype.clearMessage = function(){
     this.messageContainer.classList.add("fun-hidden");
-}
+};
+HTMLActuator.prototype.progressAppear = function(){
+    this.progressContainer.classList.remove("fun-hidden");
+};

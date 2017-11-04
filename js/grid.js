@@ -5,7 +5,7 @@ function Grid(size){
 Grid.prototype.empty = function(){
     var cells = [];
     for (var x = 0; x < this.size; x++){
-        var row = cells[x] = [];// row and cells[x] => [] (address of the object)
+        var row = cells[x] = [];
         for (var y = 0; y < this.size; y++){
             row.push(null);
         }
@@ -15,9 +15,8 @@ Grid.prototype.empty = function(){
 Grid.prototype.randomAvailableCell = function(){
     var cells = this.availableCells();
     if(cells.length){
-        var xx = cells[Math.floor(Math.random() * cells.length)];
-        return xx;
-    }// {x, y}
+        return cells[Math.floor(Math.random() * cells.length)];
+    }
 };
 Grid.prototype.availableCells = function(){
     var cells = [];
